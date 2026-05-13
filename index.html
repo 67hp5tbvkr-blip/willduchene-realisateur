@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>William Duchene — Réalisateur Vidéo</title>
-
   <meta name="description" content="William Duchene — Réalisateur vidéo. Captation, bandes-annonces, clips, interviews & documentaire." />
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,17 +12,17 @@
 
 <header class="topbar">
   <div class="logo">WILLIAM DUCHENE</div>
-
   <nav class="nav">
-    <a href="#about">À propos</a>
     <a href="#projects">Projets</a>
+    <a href="#playlists">Playlists</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO (sans filtre sombre) -->
 <section class="hero">
   <iframe
+    id="heroPlayer"
     class="hero-video"
     src="https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=1&controls=0&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0"
     allow="autoplay; encrypted-media"
@@ -31,10 +30,113 @@
     title="Showreel William Duchene"
   ></iframe>
 
-  <div class="hero-overlay"></div>
-
   <div class="hero-text">
     <h1>William Duchene</h1>
+    <p>Réalisateur Vidéo — Captation, Bandes Annonce, Musique & Documentaire</p>
+
+    <div class="hero-actions">
+      <button class="btn" id="unmuteBtn">Activer le son</button>
+      <a class="btn btn-outline" href="#projects">Voir les projets</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS MIS EN AVANT -->
+<section class="section projects" id="projects">
+  <div class="section-inner">
+    <h2>Projets mis en avant</h2>
+    <p class="subtitle">Sélection de 4 projets — lecture directe sur le site.</p>
+
+    <div class="featured-row" id="featuredRow"></div>
+  </div>
+</section>
+
+<!-- PLAYLISTS -->
+<section class="section playlists" id="playlists">
+  <div class="section-inner">
+    <h2>Catalogue</h2>
+    <p class="subtitle">Toutes les playlists (style Netflix).</p>
+
+    <div class="catalog-block">
+      <h3>Showreels</h3>
+      <div class="catalog-row">
+        <iframe class="playlist-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM"
+          allowfullscreen
+          title="Showreels"></iframe>
+      </div>
+    </div>
+
+    <div class="catalog-block">
+      <h3>Bandes annonces</h3>
+      <div class="catalog-row">
+        <iframe class="playlist-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgI39IXHReNTR9w0hScxuLki"
+          allowfullscreen
+          title="Bandes annonces"></iframe>
+      </div>
+    </div>
+
+    <div class="catalog-block">
+      <h3>Captations</h3>
+      <div class="catalog-row">
+        <iframe class="playlist-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJVCaxQdOiQ7UIJvl2SxKCV"
+          allowfullscreen
+          title="Captations"></iframe>
+      </div>
+    </div>
+
+    <div class="catalog-block">
+      <h3>Clips / Musique</h3>
+      <div class="catalog-row">
+        <iframe class="playlist-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJBZNUqjH7zSsms_QcwmWNc"
+          allowfullscreen
+          title="Clips / Musique"></iframe>
+      </div>
+    </div>
+
+    <div class="catalog-block">
+      <h3>Interviews & Reportages</h3>
+      <div class="catalog-row">
+        <iframe class="playlist-frame"
+          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIyofHxEz-kRSEgMPZia5DH"
+          allowfullscreen
+          title="Interviews"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <h2>Contact</h2>
+    <p>📩 Pour toute collaboration :</p>
+
+    <a class="contact-email" href="mailto:willduchene@gmail.com">
+      willduchene@gmail.com
+    </a>
+
+    <div class="footer">
+      © <span id="year"></span> William Duchene — Paris
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX PLAYER -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="closeBtn">✕</button>
+  <div class="lightbox-content">
+    <iframe id="player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>    <h1>William Duchene</h1>
     <p>Réalisateur Vidéo — Captation, Bandes Annonce, Musique & Documentaire</p>
 
     <div class="hero-actions">
