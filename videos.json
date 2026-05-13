@@ -1,51 +1,51 @@
 {
-  "VISION": [
-    {"id": "qomp7lstAms","title": "Savoir faire" }
-    {"id": "bgZ9WvqPgFk","title": "2010-2016" }
-    {"id": "G3zP-RhcgAE","title": "2017-2023" }
+  "vision": [
+    { "id": "qomp7lstAms", "title": "Savoir faire" },
+    { "id": "bgZ9WvqPgFk", "title": "2010-2016" },
+    { "id": "G3zP-RhcgAE", "title": "2017-2023" }
   ],
 
   "bandes_annonces": [
-    {"id": "Wdr43kj-NyA","title": "Tu te souviendras de moi" }
-    {"id": "W8Z1gdf_uas","title": "Un président ne devrait pas dire ça" }
-    {"id": "4zTZgJLQkRk","title": "Le Journal" }
-    {"id": "3MDdkkXQMl0","title": "La Corde" }
-    {"id": "T6LVuTsGaGI","title": "La jalousie" }
-    {"id": "wOnxKjSHCIQ","title": "Al Capone" }
-    {"id": "i6kzwA-aihI","title": "N'écoutez pas mesdames" }
-    {"id": "w5J2Z46D8XQ","title": "Mur Mure" }
-    {"id": "uPAi6L5VZXQ","title": "Plaidoiries" }
-    {"id": "FT0frI2LMtY","title": "Les gens de BILBAO" }
-    {"id": "Ly1Kj0XKxfY","title": "Amis" }
-    {"id": "wowFp_Xi5cY","title": "La souriciere" }
-    {"id": "uoeQna0K1PM","title": "Un singe en hiver" }
+    { "id": "Wdr43kj-NyA", "title": "Tu te souviendras de moi" },
+    { "id": "W8Z1gdf_uas", "title": "Un président ne devrait pas dire ça" },
+    { "id": "4zTZgJLQkRk", "title": "Le Journal" },
+    { "id": "3MDdkkXQMl0", "title": "La Corde" },
+    { "id": "T6LVuTsGaGI", "title": "La jalousie" },
+    { "id": "wOnxKjSHCIQ", "title": "Al Capone" },
+    { "id": "i6kzwA-aihI", "title": "N'écoutez pas mesdames" },
+    { "id": "w5J2Z46D8XQ", "title": "Mur Mure" },
+    { "id": "uPAi6L5VZXQ", "title": "Plaidoiries" },
+    { "id": "FT0frI2LMtY", "title": "Les gens de BILBAO" },
+    { "id": "Ly1Kj0XKxfY", "title": "Amis" },
+    { "id": "wowFp_Xi5cY", "title": "La souricière" },
+    { "id": "uoeQna0K1PM", "title": "Un singe en hiver" }
   ],
 
-  "Captations": [
-    {"id": "mps9I3NBjeQ","title": "Dany Boon" }
-    {"id": "3R9JkIP1OJI","title": "Patrick Timsit" }
-    {"id": "7YQ7dYsKYUI","title": "Jean-francois Cayrey" }
-    {"id": "5clhq60lsUI","title": "Titoff" }
-    {"id": "XqpyeVe3O6E","title": "Plaidoiries" }
-    {"id": "8-Xp32N619s","title": "Camille Lellouche" }
+  "captations": [
+    { "id": "mps9I3NBjeQ", "title": "Dany Boon" },
+    { "id": "3R9JkIP1OJI", "title": "Patrick Timsit" },
+    { "id": "7YQ7dYsKYUI", "title": "Jean-François Cayrey" },
+    { "id": "5clhq60lsUI", "title": "Titoff" },
+    { "id": "XqpyeVe3O6E", "title": "Plaidoiries" },
+    { "id": "8-Xp32N619s", "title": "Camille Lellouche" }
   ],
 
-  "Musique": [
-    {"id": "FEGr2EqS7PI","title": "Marc Lavoine, Arthur H & Coeur de pirate" }
-    {"id": "CELXcME_HkE","title": "CIRCUS" }
-    {"id": "jb1W3GroHJA","title": "JUICE" }
-    {"id": "RIHeK9ODWwY","title": "Y.NOAH & ASA" }
-    {"id": "7qFAUSr7ar0","title": "Alagna/Pelletier" }
-    {"id": "H5cKEoIX7-Q","title": "Anggun" }
+  "musique": [
+    { "id": "FEGr2EqS7PI", "title": "Marc Lavoine, Arthur H & Cœur de pirate" },
+    { "id": "CELXcME_HkE", "title": "CIRCUS" },
+    { "id": "jb1W3GroHJA", "title": "JUICE" },
+    { "id": "RIHeK9ODWwY", "title": "Y.NOAH & ASA" },
+    { "id": "7qFAUSr7ar0", "title": "Alagna / Pelletier" },
+    { "id": "H5cKEoIX7-Q", "title": "Anggun" }
   ],
 
-  "interviews & reportages": [
-    {"id": "3zNiJ_rMZAE","title": "Coulisses Lily & Lily" }
-    {"id": "_yUVvoFvk9E","title": "Par le bout du nez" }
-    {"id": "w9UcwcsZLis","title": "88 fois l'infini" }
-    {"id": "ZdiVW-QtV-g","title": "Documentaire 52'" }
-    {"id": "4wbgjnlYkdo","title": "Le Misanthrope 1/2" }
-    {"id": "gg5jIRF7ifE","title": "Le Misanthrope 2/2" }
-    {"id": "bk9juNdwmuk","title": "L'audience est ouverte" }
+  "interviews_reportages": [
+    { "id": "3zNiJ_rMZAE", "title": "Coulisses Lily & Lily" },
+    { "id": "_yUVvoFvk9E", "title": "Par le bout du nez" },
+    { "id": "w9UcwcsZLis", "title": "88 fois l'infini" },
+    { "id": "ZdiVW-QtV-g", "title": "Documentaire 52'" },
+    { "id": "4wbgjnlYkdo", "title": "Le Misanthrope 1/2" },
+    { "id": "gg5jIRF7ifE", "title": "Le Misanthrope 2/2" },
+    { "id": "bk9juNdwmuk", "title": "L'audience est ouverte" }
   ]
 }
