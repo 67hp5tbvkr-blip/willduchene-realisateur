@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>William Duchene — Réalisateur Vidéo</title>
+
   <meta name="description" content="William Duchene — Réalisateur vidéo. Captation, bandes-annonces, clips, interviews & documentaire." />
+  <meta name="author" content="William Duchene" />
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,21 +15,22 @@
 
 <header class="topbar">
   <div class="logo">WILLIAM DUCHENE</div>
+
   <nav class="nav">
     <a href="#projects">Projets</a>
-    <a href="#playlists">Playlists</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- HERO (sans filtre sombre) -->
-<section class="hero">
+<!-- HERO -->
+<section class="hero" id="top">
   <iframe
     id="heroPlayer"
     class="hero-video"
     src="https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=1&controls=0&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0"
     allow="autoplay; encrypted-media"
     allowfullscreen
+    loading="lazy"
     title="Showreel William Duchene"
   ></iframe>
 
@@ -36,32 +40,79 @@
 
     <div class="hero-actions">
       <button class="btn" id="unmuteBtn">Activer le son</button>
-      <a class="btn btn-outline" href="#projects">Voir les projets</a>
+      <a class="btn btn-outline" href="#projects">Découvrir</a>
     </div>
   </div>
 </section>
 
-<!-- PROJETS MIS EN AVANT -->
-<section class="section projects" id="projects">
+<!-- FEATURED -->
+<section class="section featured" id="projects">
   <div class="section-inner">
     <h2>Projets mis en avant</h2>
-    <p class="subtitle">Sélection de 4 projets — lecture directe sur le site.</p>
+    <p class="subtitle">Sélection — lecture directe sur le site.</p>
 
     <div class="featured-row" id="featuredRow"></div>
   </div>
 </section>
 
-<!-- PLAYLISTS -->
-<section class="section playlists" id="playlists">
+<!-- CATALOG -->
+<section class="section catalog">
   <div class="section-inner">
     <h2>Catalogue</h2>
-    <p class="subtitle">Toutes les playlists (style Netflix).</p>
+    <p class="subtitle">Toutes mes vidéos classées par catégories (style Netflix).</p>
 
-    <div class="catalog-block">
-      <h3>Showreels</h3>
-      <div class="catalog-row">
-        <iframe class="playlist-frame"
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM"
+    <!-- FILTERS -->
+    <div class="filters" id="filters">
+      <button class="filter active" data-filter="all">Tout</button>
+      <button class="filter" data-filter="showreels">Showreels</button>
+      <button class="filter" data-filter="bandes_annonces">Bandes annonces</button>
+      <button class="filter" data-filter="captations">Captations</button>
+      <button class="filter" data-filter="clips">Clips / Musique</button>
+      <button class="filter" data-filter="interviews">Interviews</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid" id="grid"></div>
+
+    <div class="loadmore-wrap">
+      <button class="btn btn-outline" id="loadMoreBtn">Charger plus</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <h2>Contact</h2>
+    <p>Pour toute collaboration :</p>
+
+    <a class="contact-email" href="mailto:willduchene@gmail.com">
+      willduchene@gmail.com
+    </a>
+
+    <div class="footer">
+      © <span id="year"></span> William Duchene — Paris
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX PLAYER -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="closeBtn">✕</button>
+
+  <div class="lightbox-content">
+    <iframe
+      id="player"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      title="Player"
+    ></iframe>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM"
           allowfullscreen
           title="Showreels"></iframe>
       </div>
