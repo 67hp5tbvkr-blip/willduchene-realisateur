@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>William Duchene — Réalisateur Vidéo</title>
 
-  <meta name="description" content="William Duchene — Réalisateur vidéo. Captation, bandes-annonces, clips, interviews & documentaire." />
-  <meta name="author" content="William Duchene" />
+  <meta name="description" content="William Duchene — Réalisateur vidéo : captations, bandes-annonces, clips, interviews." />
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="topbar">
   <div class="logo">WILLIAM DUCHENE</div>
 
@@ -23,285 +23,93 @@
 </header>
 
 <!-- HERO -->
-<section class="hero" id="top">
+<section class="hero">
   <iframe
     id="heroPlayer"
     class="hero-video"
-    src="https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=1&controls=0&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0"
+    src="https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=1&controls=0&loop=1&playlist=G3zP-RhcgAE&rel=0"
     allow="autoplay; encrypted-media"
     allowfullscreen
-    loading="lazy"
-    title="Showreel William Duchene"
   ></iframe>
 
   <div class="hero-text">
     <h1>William Duchene</h1>
     <p>Réalisateur Vidéo — Captation, Bandes Annonce, Musique & Documentaire</p>
 
-    <div class="hero-actions">
-      <button class="btn" id="unmuteBtn">Activer le son</button>
-      <a class="btn btn-outline" href="#projects">Découvrir</a>
-    </div>
+    <button class="btn" id="unmuteBtn">Activer le son</button>
   </div>
 </section>
 
 <!-- FEATURED -->
 <section class="section featured" id="projects">
+
   <div class="section-inner">
+
     <h2>Projets mis en avant</h2>
-    <p class="subtitle">Sélection — lecture directe sur le site.</p>
 
     <div class="featured-row" id="featuredRow"></div>
+
   </div>
+
 </section>
 
-<!-- CATALOG -->
+<!-- CATALOGUE -->
 <section class="section catalog">
+
   <div class="section-inner">
+
     <h2>Catalogue</h2>
-    <p class="subtitle">Toutes mes vidéos classées par catégories (style Netflix).</p>
 
     <!-- FILTERS -->
-    <div class="filters" id="filters">
+    <div class="filters">
       <button class="filter active" data-filter="all">Tout</button>
-      <button class="filter" data-filter="showreels">Showreels</button>
+      <button class="filter" data-filter="vision">Vision</button>
       <button class="filter" data-filter="bandes_annonces">Bandes annonces</button>
       <button class="filter" data-filter="captations">Captations</button>
-      <button class="filter" data-filter="clips">Clips / Musique</button>
-      <button class="filter" data-filter="interviews">Interviews</button>
+      <button class="filter" data-filter="musique">Musique</button>
+      <button class="filter" data-filter="interviews_reportages">Interviews</button>
     </div>
 
     <!-- GRID -->
     <div class="grid" id="grid"></div>
 
-    <div class="loadmore-wrap">
+    <div style="text-align:center;margin-top:30px;">
       <button class="btn btn-outline" id="loadMoreBtn">Charger plus</button>
     </div>
+
   </div>
+
 </section>
 
 <!-- CONTACT -->
 <section class="section contact" id="contact">
-  <div class="section-inner">
-    <h2>Contact</h2>
-    <p>Pour toute collaboration :</p>
 
-    <a class="contact-email" href="mailto:willduchene@gmail.com">
+  <div class="section-inner">
+
+    <h2>Contact</h2>
+
+    <p style="opacity:0.7;">Pour collaboration ou projet :</p>
+
+    <a href="mailto:willduchene@gmail.com" style="color:white;font-size:18px;">
       willduchene@gmail.com
     </a>
 
-    <div class="footer">
-      © <span id="year"></span> William Duchene — Paris
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX PLAYER -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="closeBtn">✕</button>
-
-  <div class="lightbox-content">
-    <iframe
-      id="player"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      title="Player"
-    ></iframe>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM"
-          allowfullscreen
-          title="Showreels"></iframe>
-      </div>
-    </div>
-
-    <div class="catalog-block">
-      <h3>Bandes annonces</h3>
-      <div class="catalog-row">
-        <iframe class="playlist-frame"
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgI39IXHReNTR9w0hScxuLki"
-          allowfullscreen
-          title="Bandes annonces"></iframe>
-      </div>
-    </div>
-
-    <div class="catalog-block">
-      <h3>Captations</h3>
-      <div class="catalog-row">
-        <iframe class="playlist-frame"
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJVCaxQdOiQ7UIJvl2SxKCV"
-          allowfullscreen
-          title="Captations"></iframe>
-      </div>
-    </div>
-
-    <div class="catalog-block">
-      <h3>Clips / Musique</h3>
-      <div class="catalog-row">
-        <iframe class="playlist-frame"
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJBZNUqjH7zSsms_QcwmWNc"
-          allowfullscreen
-          title="Clips / Musique"></iframe>
-      </div>
-    </div>
-
-    <div class="catalog-block">
-      <h3>Interviews & Reportages</h3>
-      <div class="catalog-row">
-        <iframe class="playlist-frame"
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIyofHxEz-kRSEgMPZia5DH"
-          allowfullscreen
-          title="Interviews"></iframe>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-  <div class="section-inner">
-    <h2>Contact</h2>
-    <p>📩 Pour toute collaboration :</p>
-
-    <a class="contact-email" href="mailto:willduchene@gmail.com">
-      willduchene@gmail.com
-    </a>
-
-    <div class="footer">
-      © <span id="year"></span> William Duchene — Paris
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX PLAYER -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="closeBtn">✕</button>
-  <div class="lightbox-content">
-    <iframe id="player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>    <h1>William Duchene</h1>
-    <p>Réalisateur Vidéo — Captation, Bandes Annonce, Musique & Documentaire</p>
-
-    <div class="hero-actions">
-      <a class="btn" href="#projects">Découvrir</a>
-      <a class="btn btn-outline" href="#contact">Contact</a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section about" id="about">
-  <div class="section-inner">
-    <h2>À propos</h2>
-    <p>
-      Réalisateur vidéo basé à Paris. Je réalise des films pour la musique, la scène,
-      les artistes et les marques : captations live, bandes-annonces, clips, interviews
-      et formats documentaires.
+    <p style="margin-top:40px;opacity:0.4;font-size:12px;">
+      © William Duchene
     </p>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="section projects" id="projects">
-  <div class="section-inner">
-    <h2>Projets</h2>
-    <p class="subtitle">Toutes mes playlists, directement accessibles ici.</p>
-
-    <!-- SHOWREELS -->
-    <div class="playlist-block">
-      <h3>Showreels</h3>
-      <div class="playlist-player">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-          title="Showreels"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- BANDES ANNONCES -->
-    <div class="playlist-block">
-      <h3>Bandes annonces</h3>
-      <div class="playlist-player">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgI39IXHReNTR9w0hScxuLki"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-          title="Bandes annonces"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- MUSIQUES / CLIPS -->
-    <div class="playlist-block">
-      <h3>Clips / Musique</h3>
-      <div class="playlist-player">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJBZNUqjH7zSsms_QcwmWNc"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-          title="Clips / Musique"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- CAPTATIONS -->
-    <div class="playlist-block">
-      <h3>Captations</h3>
-      <div class="playlist-player">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgJVCaxQdOiQ7UIJvl2SxKCV"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-          title="Captations"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- INTERVIEWS -->
-    <div class="playlist-block">
-      <h3>Interviews & Reportages</h3>
-      <div class="playlist-player">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PLJpwSH_unsgIyofHxEz-kRSEgMPZia5DH"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-          title="Interviews & Reportages"
-        ></iframe>
-      </div>
-    </div>
 
   </div>
+
 </section>
 
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-  <div class="section-inner">
-    <h2>Contact</h2>
-    <p>📩 Pour toute collaboration :</p>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="closeBtn">✕</button>
 
-    <a class="contact-email" href="mailto:willduchene@gmail.com">
-      willduchene@gmail.com
-    </a>
+  <iframe id="player" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
-    <div class="footer">
-      © <span id="year"></span> William Duchene — Paris
-    </div>
-  </div>
-</section>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
