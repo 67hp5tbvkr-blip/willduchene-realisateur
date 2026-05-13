@@ -1,54 +1,84 @@
-const featured = [
-  { id: "FT0frI2LMtY", title: "Projet — Bande annonce" },
-  { id: "fLNfS5OR8t4", title: "Projet — Clip" },
-  { id: "3m3XVDgL7ww", title: "Projet — Captation" },
-  { id: "nfFwveM2eLA", title: "Projet — Interview" }
-];
+let videosData = {};
+let allItems = [];
+let currentFilter = "all";
+let loadedCount = 0;
+const BATCH = 12;
 
-const featuredRow = document.getElementById("featuredRow");
+const grid = document.getElementById("grid");
 const lightbox = document.getElementById("lightbox");
 const player = document.getElementById("player");
 const closeBtn = document.getElementById("closeBtn");
 
-document.getElementById("year").textContent = new Date().getFullYear();
+// Load JSON
+fetch("videos.json")
+  .then(res => res.json())
+  .then(json => {
+    videosData = json;
+    buildAllItems();
+    renderMore();
+  });
 
-/* LIGHTBOX */
-function openVideo(id){
-  lightbox.style.display = "flex";
-  player.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&rel=0&modestbranding=1`;
+// Build flat list
+function buildAllItems(){
+  allItems = [];
+  Object.keys(videosData).forEach(cat => {
+    videosData[cat].forEach(v => {
+      allItems.push({...v, category:cat});
+    });
+  });
 }
 
-function closeVideo(){
-  lightbox.style.display = "none";
-  player.src = "";
+// Render batch
+function renderMore(){
+  const list = currentFilter === "all" ? allItems : allItems.filter(v => v.category === currentFilter);
+  const slice = list.slice(loadedCount, loadedCount + BATCH);
+  slice.forEach(v => grid.appendChild(createCard(v)));
+  loadedCount += slice.length;
 }
 
-closeBtn.addEventListener("click", closeVideo);
-lightbox.addEventListener("click", (e) => {
-  if(e.target === lightbox) closeVideo();
-});
-
-/* FEATURED RENDER */
-featured.forEach(v => {
+// Create card with hover preview
+function createCard(video){
   const div = document.createElement("div");
-  div.className = "featured-card";
+  div.className = "card";
+
+  const thumb = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+  const preview = document.createElement("iframe");
 
   div.innerHTML = `
-    <div class="featured-thumb">
-      <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}">
-    </div>
-    <div class="featured-meta">
-      <h3>${v.title}</h3>
-    </div>
+    <img src="${thumb}" class="thumb-img">
+    <div class="meta"><h3>${video.title}</h3></div>
   `;
 
-  div.addEventListener("click", () => openVideo(v.id));
-  featuredRow.appendChild(div);
-});
+  // Hover preview
+  div.onmouseover = () => {
+    preview.src = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0`;
+    preview.className = "hover-preview";
+    div.replaceChild(preview, div.querySelector(".thumb-img"));
+  };
 
-/* HERO SOUND BUTTON */
-document.getElementById("unmuteBtn").addEventListener("click", () => {
-  // Recharge le player hero avec son (clic utilisateur autorise)
-  const hero = document.getElementById("heroPlayer");
-  hero.src = "https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=0&controls=1&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0";
+  div.onmouseout = () => {
+    div.replaceChild(document.createElement("img"), preview);
+    div.querySelector("img").src = thumb;
+    div.querySelector("img").className = "thumb-img";
+  };
+
+  div.onclick = () => openVideo(video.id);
+  return div;
+}
+
+// Lightbox player
+function openVideo(id){
+  player.src = `https://www.youtube.com/embed/${id}?autoplay=1&controls=1`;
+  lightbox.style.display = "flex";
+}
+
+closeBtn.onclick = () => {
+  player.src = "";
+  lightbox.style.display = "none";
+};
+
+window.addEventListener("scroll", () => {
+  if(window.innerHeight + window.scrollY > document.body.offsetHeight - 300){
+    renderMore();
+  }
 });
