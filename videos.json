@@ -1,15 +1,15 @@
 {
-  "vision": [
-    { "id": "qomp7lstAms", "title": "SAVOIR FAIRE" },
-    { "id": "bgZ9WvqPgFk", "title": "2010-2016" },
-    { "id": "G3zP-RhcgAE", "title": "2017-2023" }
+  "compétences": [
+    { "id": "qomp7lstAms", "title": "UN ACCOMPAGNEMENT GLOBAL POUR VOS PROJETS" },
+    { "id": "bgZ9WvqPgFk", "title": "SHOWREEL 2010-2016" },
+    { "id": "G3zP-RhcgAE", "title": "SHOWREEL 2017-2023" }
   ],
 
   "bandes_annonces": [
-    { "id": "Wdr43kj-NyA", "title": "Tu te souviendras de moi" },
-    { "id": "W8Z1gdf_uas", "title": "Un président ne devrait pas dire ça" },
-    { "id": "4zTZgJLQkRk", "title": "Le Journal" },
-    { "id": "3MDdkkXQMl0", "title": "La Corde" },
+    { "id": "Wdr43kj-NyA", "title": "TU TE SOUVIENDRAS DE MOI, Théâtre de Paris" },
+    { "id": "W8Z1gdf_uas", "title": "UN PRÉSIDENT NE DEVRAIT PAS DIRE ÇA, Théâtre Libre" },
+    { "id": "4zTZgJLQkRk", "title": "LE JOURNAL, Théatre de Paris" },
+    { "id": "3MDdkkXQMl0", "title": "LA CORDE, Théatre Marigny" },
     { "id": "T6LVuTsGaGI", "title": "La jalousie" },
     { "id": "wOnxKjSHCIQ", "title": "Al Capone" },
     { "id": "i6kzwA-aihI", "title": "N'écoutez pas mesdames" },
