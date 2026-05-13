@@ -3,7 +3,7 @@
    YouTube Playlists Sync (API)
    =========================== */
 
-const API_KEY = "AIzaSyCR9BJN7QqDnntj-BYg3Zs_Z49f2ogCRkk";
+const API_KEY = "AIzaSyCQmVuqzvmeMmBthnrfvlULxsnGRd7vKQE";
 
 /* PLAYLISTS */
 const PLAYLISTS = [
