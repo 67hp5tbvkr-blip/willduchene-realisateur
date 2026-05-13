@@ -1,28 +1,20 @@
 /* ===========================
-   WILLIAM DUCHENE — ARTE PRO
-   Stable GitHub Pages Version
+   WILLIAM DUCHENE — ARTE AUTO
+   YouTube Playlists Sync (API)
    =========================== */
 
-const VIDEOS = [
-  // SHOWREELS
-  { id: "G3zP-RhcgAE", title: "Showreel 2025", category: "showreel" },
+const API_KEY = "AIzaSyCR9BJN7QqDnntj-BYg3Zs_Z49f2ogCRkk";
 
-  // BANDES ANNONCES
-  { id: "FT0frI2LMtY", title: "Bande annonce", category: "trailer" },
-
-  // CLIPS / MUSIQUE
-  { id: "fLNfS5OR8t4", title: "Clip", category: "clip" },
-
-  // CAPTATIONS
-  { id: "3m3XVDgL7ww", title: "Captation", category: "capture" },
-
-  // INTERVIEWS
-  { id: "nfFwveM2eLA", title: "Interview", category: "interview" }
+/* PLAYLISTS */
+const PLAYLISTS = [
+  { id: "PLJpwSH_unsgIN3bCbNm-7RSkpsem3VbFM", category: "showreel", label: "Showreels" },
+  { id: "PLJpwSH_unsgI39IXHReNTR9w0hScxuLki", category: "trailer", label: "Bandes annonces" },
+  { id: "PLJpwSH_unsgJVCaxQdOiQ7UIJvl2SxKCV", category: "capture", label: "Captations" },
+  { id: "PLJpwSH_unsgJBZNUqjH7zSsms_QcwmWNc", category: "clip", label: "Clips" },
+  { id: "PLJpwSH_unsgIyofHxEz-kRSEgMPZia5DH", category: "interview", label: "Interviews" }
 ];
 
-/* ===========================
-   DOM
-   =========================== */
+/* DOM */
 const grid = document.getElementById("grid");
 const lightbox = document.getElementById("lightbox");
 const player = document.getElementById("player");
@@ -32,11 +24,9 @@ const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 year.textContent = new Date().getFullYear();
 
-/* ===========================
-   LIGHTBOX
-   =========================== */
+/* LIGHTBOX */
 function openVideo(videoId){
-  player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1`;
+  player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&rel=0&modestbranding=1`;
   lightbox.style.display = "flex";
 }
 
@@ -46,82 +36,77 @@ function closeVideo(){
 }
 
 closeBtn.addEventListener("click", closeVideo);
-
 lightbox.addEventListener("click", (e) => {
   if(e.target === lightbox) closeVideo();
 });
 
-/* ===========================
-   RENDER SYSTEM
-   =========================== */
+/* DATA */
+let ALL_VIDEOS = [];
 let currentFilter = "all";
 let displayed = 0;
-const STEP = 9;
+const STEP = 12;
 
-function getFiltered(){
-  if(currentFilter === "all") return VIDEOS;
-  return VIDEOS.filter(v => v.category === currentFilter);
-}
+/* FETCH PLAYLIST ITEMS WITH PAGINATION */
+async function fetchPlaylistAll(playlistId){
+  let items = [];
+  let pageToken = "";
 
-function createCard(video){
-  const card = document.createElement("div");
-  card.className = "card";
+  while(true){
+    const url =
+      `https://www.googleapis.com/youtube/v3/playlistItems?` +
+      `part=snippet&maxResults=50&playlistId=${playlistId}&key=${API_KEY}` +
+      (pageToken ? `&pageToken=${pageToken}` : "");
 
-  const thumb = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+    const res = await fetch(url);
+    const data = await res.json();
 
-  card.innerHTML = `
-    <div class="thumb">
-      <img src="${thumb}" alt="${video.title}">
-    </div>
-    <div class="meta">
-      <h3>${video.title}</h3>
-      <span>Regarder</span>
-    </div>
-  `;
+    if(data.error){
+      console.error("YouTube API Error:", data.error);
+      return [];
+    }
 
-  card.addEventListener("click", () => openVideo(video.id));
-  return card;
-}
+    if(!data.items) return [];
 
-function renderMore(){
-  const list = getFiltered();
-  const slice = list.slice(displayed, displayed + STEP);
+    items.push(...data.items);
 
-  slice.forEach(v => grid.appendChild(createCard(v)));
-  displayed += slice.length;
-
-  if(displayed >= list.length){
-    loadMoreBtn.style.display = "none";
-  } else {
-    loadMoreBtn.style.display = "inline-flex";
+    if(data.nextPageToken){
+      pageToken = data.nextPageToken;
+    } else {
+      break;
+    }
   }
+
+  return items;
 }
 
-function resetGrid(){
-  grid.innerHTML = "";
-  displayed = 0;
-  renderMore();
-}
+/* LOAD ALL PLAYLISTS */
+async function loadAllVideos(){
+  ALL_VIDEOS = [];
+  grid.innerHTML = `<div style="color:rgba(255,255,255,0.6);padding:20px 0;">Chargement des playlists…</div>`;
 
-/* ===========================
-   FILTERS
-   =========================== */
-document.querySelectorAll(".filter").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+  for(const p of PLAYLISTS){
+    const items = await fetchPlaylistAll(p.id);
 
-    currentFilter = btn.getAttribute("data-filter");
-    resetGrid();
-  });
-});
+    const mapped = items
+      .map(v => {
+        const sn = v.snippet;
+        if(!sn || !sn.resourceId) return null;
 
-/* ===========================
-   LOAD MORE BUTTON
-   =========================== */
-loadMoreBtn.addEventListener("click", renderMore);
+        return {
+          id: sn.resourceId.videoId,
+          title: sn.title || "Sans titre",
+          category: p.category,
+          categoryLabel: p.label,
+          thumb: sn.thumbnails?.high?.url || sn.thumbnails?.medium?.url || ""
+        };
+      })
+      .filter(Boolean)
+      .filter(v => v.title.toLowerCase() !== "private video" && v.title.toLowerCase() !== "deleted video");
 
-/* ===========================
-   INIT
-   =========================== */
-resetGrid();
+    ALL_VIDEOS.push(...mapped);
+  }
+
+  // Remove duplicates (if video appears in multiple playlists)
+  const seen = new Set();
+  ALL_VIDEOS = ALL_VIDEOS.filter(v => {
+    if(seen.has(v.id))
