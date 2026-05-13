@@ -16,18 +16,18 @@
     { "id": "w5J2Z46D8XQ", "title": "MUR MURE, Théâtre de la Michodière 2025" },
     { "id": "uPAi6L5VZXQ", "title": "PLAIDOIRIES, Théâtre Libre 2019" },
     { "id": "FT0frI2LMtY", "title": "LES GENS DE BILBAO, Théâtre Marigny 2024" },
-    { "id": "Ly1Kj0XKxfY", "title": "Amis" },
-    { "id": "wowFp_Xi5cY", "title": "La souricière" },
-    { "id": "uoeQna0K1PM", "title": "Un singe en hiver" }
+    { "id": "Ly1Kj0XKxfY", "title": "AMIS, Théâtre de la Michodière 2020" },
+    { "id": "wowFp_Xi5cY", "title": "LA SOURICIÈRE, Théâtre de la Pépinière 2020" },
+    { "id": "uoeQna0K1PM", "title": "UN SINGE EN HIVER, Théâtre de Paris 2014" }
   ],
 
   "captations": [
-    { "id": "mps9I3NBjeQ", "title": "Dany Boon" },
-    { "id": "3R9JkIP1OJI", "title": "Patrick Timsit" },
-    { "id": "7YQ7dYsKYUI", "title": "Jean-François Cayrey" },
-    { "id": "5clhq60lsUI", "title": "Titoff" },
-    { "id": "XqpyeVe3O6E", "title": "Plaidoiries" },
-    { "id": "8-Xp32N619s", "title": "Camille Lellouche" }
+    { "id": "mps9I3NBjeQ", "title": "Dany Boon des Haut de France 2017" },
+    { "id": "3R9JkIP1OJI", "title": "Patrick Timsit One man Stand-up Show 2014" },
+    { "id": "7YQ7dYsKYUI", "title": "Jean-François Cayrey, Ils sont cons ou c'est moi 2016" },
+    { "id": "5clhq60lsUI", "title": "Titoff, Déjà de retour 2012" },
+    { "id": "XqpyeVe3O6E", "title": "Plaidoiries, Théâtre Libre 2019" },
+    { "id": "8-Xp32N619s", "title": "Camille Lellouche, En vrai 2018" }
   ],
 
   "musique": [
@@ -40,12 +40,12 @@
   ],
 
   "interviews_reportages": [
-    { "id": "3zNiJ_rMZAE", "title": "Coulisses Lily & Lily" },
-    { "id": "_yUVvoFvk9E", "title": "Par le bout du nez" },
-    { "id": "w9UcwcsZLis", "title": "88 fois l'infini" },
-    { "id": "ZdiVW-QtV-g", "title": "Documentaire 52'" },
-    { "id": "4wbgjnlYkdo", "title": "Le Misanthrope 1/2" },
-    { "id": "gg5jIRF7ifE", "title": "Le Misanthrope 2/2" },
-    { "id": "bk9juNdwmuk", "title": "L'audience est ouverte" }
+    { "id": "3zNiJ_rMZAE", "title": "Les Coulisses de Lily & Lily, pour Fimalac" },
+    { "id": "_yUVvoFvk9E", "title": "Par le bout du nez, pour JMD production" },
+    { "id": "w9UcwcsZLis", "title": "88 fois l'infini, pour ArtsLive" },
+    { "id": "ZdiVW-QtV-g", "title": "Documentaire 52', pour Planet+" },
+    { "id": "4wbgjnlYkdo", "title": "Le Misanthrope 1/2, pour JMD production" },
+    { "id": "gg5jIRF7ifE", "title": "Le Misanthrope 2/2, pour JMD production" },
+    { "id": "bk9juNdwmuk", "title": "L'audience est ouverte, pour ArtsLive" }
   ]
 }
