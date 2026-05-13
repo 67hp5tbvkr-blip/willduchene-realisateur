@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>William Duchene — Réalisateur Vidéo</title>
+
+  <meta name="description" content="William Duchene — Réalisateur vidéo. Captation, bandes-annonces, clips, interviews & documentaire." />
+  <meta name="author" content="William Duchene" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="logo">WILLIAM DUCHENE</div>
+
+    <nav class="nav">
+      <a href="#about">À propos</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO FULLSCREEN -->
+  <section class="hero" id="top">
+    <iframe
+      class="hero-video"
+      src="https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=1&controls=0&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      loading="lazy"
+      title="Showreel William Duchene"
+    ></iframe>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-text">
+      <h1>William Duchene</h1>
+      <p>Réalisateur Vidéo — Captation, Bandes Annonce, Musique & Documentaire</p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#projects">Découvrir</a>
+        <a class="btn btn-outline" href="#contact">Contact</a>
+      </div>
+
+      <div class="scroll-indicator">Scroll ↓</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-inner">
+      <h2>À propos</h2>
+      <p>
+        Réalisateur vidéo basé à Paris. Je réalise des films pour la musique, la scène,
+        les artistes et les marques. Captations live, bandes-annonces, clips, interviews
+        et formats documentaires avec une approche sobre, cinématographique et efficace.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2>Projets</h2>
+        <p class="subtitle">Sélection de travaux. Lecture directe sur le site.</p>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">Tout</button>
+        <button class="filter" data-filter="showreel">Showreels</button>
+        <button class="filter" data-filter="trailer">Bandes annonces</button>
+        <button class="filter" data-filter="capture">Captations</button>
+        <button class="filter" data-filter="clip">Clips</button>
+        <button class="filter" data-filter="interview">Interviews</button>
+      </div>
+
+      <!-- GRID -->
+      <div class="grid" id="grid"></div>
+
+      <div class="loadmore-wrap">
+        <button class="btn btn-outline" id="loadMoreBtn">Charger plus</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="section-inner">
+      <h2>Contact</h2>
+      <p>Pour toute collaboration, réalisation ou production :</p>
+
+      <a class="contact-email" href="mailto:willduchene@gmail.com">
+        willduchene@gmail.com
+      </a>
+
+      <div class="footer">
+        © <span id="year"></span> William Duchene — Paris
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX PLAYER -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="closeBtn">✕</button>
+    <div class="lightbox-content">
+      <iframe
+        id="player"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="Player"
+      ></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
