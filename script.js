@@ -1,23 +1,9 @@
-/* ===========================
-   William Duchene — Catalogue
-   JSON-driven (no API)
-   Netflix hover preview + infinite scroll
-   =========================== */
-
-const FEATURED = [
-  { id: "FT0frI2LMtY", title: "Bande annonce" },
-  { id: "fLNfS5OR8t4", title: "Clip" },
-  { id: "3m3XVDgL7ww", title: "Captation" },
-  { id: "nfFwveM2eLA", title: "Interview" }
-];
-
 let videosData = {};
 let allVideos = [];
 let filteredVideos = [];
 
-let currentFilter = "all";
 let displayed = 0;
-const STEP = 16;
+const STEP = 12;
 
 const grid = document.getElementById("grid");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -28,14 +14,12 @@ const lightbox = document.getElementById("lightbox");
 const player = document.getElementById("player");
 const closeBtn = document.getElementById("closeBtn");
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
 /* -------------------------
-   HERO SOUND BUTTON
+   HERO SOUND
 -------------------------- */
 document.getElementById("unmuteBtn").addEventListener("click", () => {
   const hero = document.getElementById("heroPlayer");
-  hero.src = "https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=0&controls=1&loop=1&playlist=G3zP-RhcgAE&modestbranding=1&rel=0";
+  hero.src = "https://www.youtube.com/embed/G3zP-RhcgAE?autoplay=1&mute=0&controls=1&rel=0";
 });
 
 /* -------------------------
@@ -43,7 +27,7 @@ document.getElementById("unmuteBtn").addEventListener("click", () => {
 -------------------------- */
 function openVideo(id){
   lightbox.style.display = "flex";
-  player.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1`;
+  player.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
 }
 
 function closeVideo(){
@@ -57,8 +41,15 @@ lightbox.addEventListener("click", (e) => {
 });
 
 /* -------------------------
-   FEATURED RENDER
+   FEATURED (FIXE)
 -------------------------- */
+const FEATURED = [
+  { id: "G3zP-RhcgAE", title: "Showreel" },
+  { id: "FT0frI2LMtY", title: "Bande annonce" },
+  { id: "mps9I3NBjeQ", title: "Captation" },
+  { id: "CELXcME_HkE", title: "Musique" }
+];
+
 function renderFeatured(){
   FEATURED.forEach(v => {
     const div = document.createElement("div");
@@ -66,39 +57,42 @@ function renderFeatured(){
 
     div.innerHTML = `
       <div class="featured-thumb">
-        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}">
+        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg">
       </div>
       <div class="featured-meta">
         <h3>${v.title}</h3>
       </div>
     `;
 
-    div.addEventListener("click", () => openVideo(v.id));
+    div.onclick = () => openVideo(v.id);
     featuredRow.appendChild(div);
   });
 }
 
 /* -------------------------
-   BUILD LIST FROM JSON
+   BUILD FROM JSON (FIX TOTAL)
 -------------------------- */
 function buildAllVideos(){
+
   allVideos = [];
 
-  Object.keys(videosData).forEach(category => {
-    videosData[category].forEach(v => {
+  Object.entries(videosData).forEach(([category, videos]) => {
+
+    videos.forEach(v => {
       allVideos.push({
         id: v.id,
-        title: v.title || "Sans titre",
+        title: v.title,
         category: category
       });
     });
+
   });
 
   filteredVideos = allVideos;
 }
 
 /* -------------------------
-   CREATE CARD WITH HOVER PREVIEW
+   CARD (NETFLIX STYLE)
 -------------------------- */
 function createCard(video){
   const div = document.createElement("div");
@@ -106,50 +100,46 @@ function createCard(video){
 
   div.innerHTML = `
     <div class="thumb">
-      <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+      <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg">
     </div>
     <div class="meta">
       <h3>${video.title}</h3>
     </div>
   `;
 
-  let previewIframe = null;
+  let iframe;
 
   div.addEventListener("mouseenter", () => {
     const thumb = div.querySelector(".thumb");
-    if(!thumb) return;
 
-    previewIframe = document.createElement("iframe");
-    previewIframe.className = "preview-frame";
-    previewIframe.allow = "autoplay; encrypted-media";
-    previewIframe.src = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1`;
+    iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&controls=0&rel=0`;
+    iframe.className = "preview-frame";
 
     thumb.innerHTML = "";
-    thumb.appendChild(previewIframe);
+    thumb.appendChild(iframe);
   });
 
   div.addEventListener("mouseleave", () => {
     const thumb = div.querySelector(".thumb");
-    if(!thumb) return;
 
     thumb.innerHTML = `
-      <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+      <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg">
     `;
   });
 
   div.addEventListener("click", () => openVideo(video.id));
+
   return div;
 }
 
 /* -------------------------
-   RENDER BATCH
+   RENDER
 -------------------------- */
-function renderMore(){
+function render(){
   const slice = filteredVideos.slice(displayed, displayed + STEP);
 
-  slice.forEach(video => {
-    grid.appendChild(createCard(video));
-  });
+  slice.forEach(v => grid.appendChild(createCard(v)));
 
   displayed += slice.length;
 
@@ -160,13 +150,10 @@ function renderMore(){
   }
 }
 
-/* -------------------------
-   RESET GRID
--------------------------- */
-function resetGrid(){
+function reset(){
   grid.innerHTML = "";
   displayed = 0;
-  renderMore();
+  render();
 }
 
 /* -------------------------
@@ -174,35 +161,34 @@ function resetGrid(){
 -------------------------- */
 document.querySelectorAll(".filter").forEach(btn => {
   btn.addEventListener("click", () => {
+
     document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    currentFilter = btn.getAttribute("data-filter");
+    const filter = btn.dataset.filter;
 
-    if(currentFilter === "all"){
+    if(filter === "all"){
       filteredVideos = allVideos;
     } else {
-      filteredVideos = allVideos.filter(v => v.category === currentFilter);
+      filteredVideos = allVideos.filter(v => v.category === filter);
     }
 
-    resetGrid();
+    reset();
   });
 });
 
 /* -------------------------
-   LOAD MORE BUTTON
+   LOAD MORE
 -------------------------- */
-loadMoreBtn.addEventListener("click", renderMore);
+loadMoreBtn.addEventListener("click", render);
 
 /* -------------------------
-   INFINITE SCROLL
+   SCROLL INFINITE
 -------------------------- */
 window.addEventListener("scroll", () => {
-  if(loadMoreBtn.style.display === "none") return;
-
-  const nearBottom = window.innerHeight + window.scrollY > document.body.offsetHeight - 600;
+  const nearBottom = window.innerHeight + window.scrollY > document.body.offsetHeight - 400;
   if(nearBottom){
-    renderMore();
+    render();
   }
 });
 
@@ -216,32 +202,9 @@ fetch("videos.json")
   .then(json => {
     videosData = json;
     buildAllVideos();
-    resetGrid();
+    reset();
   })
-  .catch(() => {
-    grid.innerHTML = `
-      <div style="color:rgba(255,255,255,0.65);padding:20px 0;">
-        Erreur : fichier <b>videos.json</b> introuvable ou mal formaté.
-      </div>
-    `;
+  .catch(err => {
+    console.error(err);
+    grid.innerHTML = "<p style='color:white'>Erreur chargement JSON</p>";
   });
-  div.onclick = () => openVideo(video.id);
-  return div;
-}
-
-// Lightbox player
-function openVideo(id){
-  player.src = `https://www.youtube.com/embed/${id}?autoplay=1&controls=1`;
-  lightbox.style.display = "flex";
-}
-
-closeBtn.onclick = () => {
-  player.src = "";
-  lightbox.style.display = "none";
-};
-
-window.addEventListener("scroll", () => {
-  if(window.innerHeight + window.scrollY > document.body.offsetHeight - 300){
-    renderMore();
-  }
-});
