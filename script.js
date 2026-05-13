@@ -44,10 +44,10 @@ lightbox.addEventListener("click", (e) => {
    FEATURED (FIXE)
 -------------------------- */
 const FEATURED = [
-  { id: "FT0frI2LMtY", title: "Bande annonce" },
-  { id: "mps9I3NBjeQ", title: "Captation" },
-  { id: "CELXcME_HkE", title: "Musique" },
-  { id: "4c_jGWO1Bic", title: "Motion-Design" }
+  { id: "FT0frI2LMtY", title: "BANDE ANNONCE" },
+  { id: "mps9I3NBjeQ", title: "CAPTATION" },
+  { id: "CELXcME_HkE", title: "MUSIQUE" },
+  { id: "4c_jGWO1Bic", title: "MOTION DESIGN" }
 ];
 
 function renderFeatured(){
